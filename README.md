@@ -281,3 +281,18 @@ editarTarjeta(tarjeta: any) {
   }
 
 
+Subir proyecto
+git init
+git add .
+git commit -m "Proyecto inicial"
+git remote add origin https://github.com/RodolfoRiveraM/CRUD.git
+git push -u origin main
+
+Dado si lo pone como subdominio
+cd ~/Desktop/pruebadfd/CRUD
+git rm --cached FETarjetaCredito
+git commit -m "Quitando FETarjetaCredito como submódulo"
+rm -rf FETarjetaCredito/.git
+git add FETarjetaCredito
+git commit -m "Agregando FETarjetaCredito como carpeta normal"
+git push origin main
