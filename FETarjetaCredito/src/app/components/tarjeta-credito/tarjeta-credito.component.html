@@ -1,0 +1,85 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-c">
+                    <h3 class="titulo">Tarjeta de crédito</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">{{ accion | uppercase }} Tarjeta</h5>
+
+                    <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user "></i>
+                            </span>
+                            <input formControlName="titular" type="text" class="form-control" placeholder="Titular" aria-label="Titular">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-credit-card "></i>
+                            </span>
+                            <input formControlName="numeroTarjeta" type="text" class="form-control" placeholder="Numero Tarjeta" aria-label="Numero Tarjeta">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-calendar-alt "></i>
+                                    </span>
+                                    <input formControlName="fechaExpiracion" type="text" class="form-control" placeholder="MM/YY" aria-label="MM/YY">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-key "></i>
+                                    </span>
+                                    <input formControlName="cvv" type="text" class="form-control" placeholder="CVV" aria-label="CVV">
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success btn-lg" type="submit">
+                                    <i class="fas fa-database"></i>Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">Listado de Tarjeta</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let tarjeta of listTarjetas;">
+                                <td>{{tarjeta.titular}}</td>
+                                <td>{{tarjeta.numeroTarjeta}}</td>
+                                <td>{{tarjeta.fechaExpiracion}}</td>
+                                <td>{{tarjeta.cvv}}</td>
+                                <td>
+                                    <i (click)="editarTarjeta(tarjeta)" class="fa-regular fa-pen-to-square text-info"></i>
+                                </td>
+                                <td>
+                                    <i (click)="eliminarTarjeta(tarjeta.id)" class="fa-solid fa-trash text-danger"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
